@@ -8,9 +8,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Routes
 } from "react-router-dom";
 import Alert from './Components/Alert';
+import Example from './Components/Example';
 
 
 function App() {
@@ -53,14 +55,13 @@ function App() {
   return (
     <>
     <Router>
-    <switch>
-    <Route>
-      <Navbar title="TextUtils" hometext="Home" abouttext="About" mode={mode} toggleMode={toggleMode}/>
-    </Route>
-    </switch>
+    <Navbar title="TextUtils" hometext="Home" abouttext="About" mode={mode} toggleMode={toggleMode}/>
     <Alert value={alert}/>
-    <Turkey mode={mode} alert={changealert}/>
-    <About/>
+    <Routes>
+    <Route path="/" element={<Turkey mode={mode} alert={changealert}/>}></Route>
+    <Route path="/example" element={<Example/>}></Route>
+    <Route path="/about" element={<About/>}></Route>
+    </Routes>
     </Router>
     </>
   );
